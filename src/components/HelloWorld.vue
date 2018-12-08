@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="hello" id="app">
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
     <ul>
@@ -80,18 +80,29 @@
         </a>
       </li>
     </ul>
+    <pre></pre>
   </div>
 </template>
 
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'HelloWorld11',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
   }
 }
+
+$.ajax({
+    url: 'hello.json',
+    dataType: 'json'
+}).done(function(data, status, jqXHR){
+    $('<pre>').text(JSON.stringify(data, null, 4))
+        .appendTo('body')
+})
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
