@@ -31,6 +31,7 @@ $.ajax({
           .appendTo('body')
   })
 
+// test
 for (let key in data) {
   Mock.mock(RegExp('.*?' + key + '.*?'), data[key])
 }
