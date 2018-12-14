@@ -10,7 +10,7 @@ const chalk = require('chalk')
 const webpack = require('webpack')
 const config = require('../config')
 const webpackConfig = require('./webpack.prod.conf')
-
+const cp = require('child_process')
 const spinner = ora('building for production...')
 spinner.start()
 
@@ -31,6 +31,15 @@ rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
       console.log(chalk.red('  Build failed with errors.\n'))
       process.exit(1)
     }
+
+    cp.execFile('./package.sh', ['hell000'], function (err, stdout, stderr) {
+      if (err) {
+        console.log('子进程开启失败: ' + err)
+        process.exit()
+      } else {
+        console.log('子进程标准输出: ' + stdout.toString())
+      }
+    })
 
     console.log(chalk.cyan('  Build complete.\n'))
     console.log(chalk.yellow(

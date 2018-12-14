@@ -4,15 +4,21 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
-const {Mock} = require('mockjs')
-const {data} = require('../mock/oredr-detail')
+const {
+  Mock
+} = require('mockjs')
+/*
+const {
+  data
+} = require('../test/mock/oredr-detail') */
 Vue.config.productionTip = false
-console.log(process.cwd());
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
-  components: { App },
+  components: {
+    App
+  },
   template: '<App/>'
 })
 
@@ -22,16 +28,11 @@ Mock.mock(/\.json/, {
     'email': '@EMAIL'
   }]
 })
-
-$.ajax({
-      url: 'aab.json',
-      dataType: 'json'
-  }).done(function(data, status, jqXHR){
-      $('<pre>').text(JSON.stringify(data, null, 4))
-          .appendTo('body')
-  })
+console.log(process.cwd())
 
 // test
+/*
 for (let key in data) {
   Mock.mock(RegExp('.*?' + key + '.*?'), data[key])
 }
+*/
